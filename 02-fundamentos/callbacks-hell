@@ -1,0 +1,59 @@
+const empleados = [
+    {
+        id: 1,
+        nombre: "Fernando"
+    },
+    {
+        id: 2,
+        nombre: "Diego"
+    },
+    {
+        id: 3,
+        nombre: "Carlos"
+    },
+]
+
+const salarios = [
+    {
+        id: 1,
+        salario: 1000 
+    },
+    {
+        id: 2,
+        salario: 1500
+    },
+]
+
+
+
+let trabajador=2;
+
+
+const getEmpleado=(id, cb)=>{
+    let resultado = empleados.find(x=>x.id===id);
+    if (resultado) cb(null, resultado);
+    else cb(`El empleado ${id} no existe`);
+};
+
+getEmpleado(trabajador,(error, salario)=>{
+    if (error) {
+        console.log('Ha habido un error!');
+        return console.log(error);
+    }
+    console.log(salario);
+})
+
+
+getSalario =(id, cb)=>{
+    let result = salarios.find(x=>x.id===id);
+    if (result) cb(null, result);
+    else cb(`No existen datos del salario del trabajador ${id}`); 
+}
+
+getSalario(trabajador,(err,empleado)=>{
+    if (err) {
+        console.log('Ha habido un error!');
+        return console.log(err);
+    }
+    return console.log(`El salario del trabajador ${empleado.id} es ${empleado.salario}`); 
+})
